@@ -3,3 +3,4 @@ NRCLServer.*.log
 .settings/
 .classpath
 .project
+*.attach_pid*
