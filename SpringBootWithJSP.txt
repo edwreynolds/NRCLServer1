@@ -1,0 +1,28 @@
+	1) New Project -> Spring -> Spring Starter Project
+	2) Edit file 'src/main/resources/application.properties' .  Use this file to hold external configuration settings.
+		a. https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html
+		b. https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+		c. Add the following
+			spring.mvc.view.prefix: /WEB-INF/views/
+			spring.mvc.view.suffix: .jsp
+	3) Edit the pom.xml and add the following
+		<!-- Need this to compile JSP -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<!-- Provided -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	4) Create directory /src/webapp
+	4a) Under webapp, create directories: css, images, js, src, WEB-INF
+	4b) Under WEB-INF, create directory: views.  views will hold JSP files
+	4c) In directory WEB-INF add the file web.xml
