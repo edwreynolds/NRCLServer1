@@ -59,7 +59,7 @@ public class JobScheduler {
 	}
 
 	@Bean
-	public SimpleTriggerFactoryBean trigger(JobDetail job) {
+	public SimpleTriggerFactoryBean diskMgmtTrigger(JobDetail job) {
 		SimpleTriggerFactoryBean trigger = new SimpleTriggerFactoryBean();
 		trigger.setJobDetail(job);
 
@@ -69,11 +69,38 @@ public class JobScheduler {
 		trigger.setRepeatInterval(frequencyInSec * 1000);
 		trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
 		trigger.setName("Disk Mgmt Trigger");
+		trigger.setDescription("Disk Mgmt #1");
 		return trigger;
 	}
-
+	
+	/**
+	 * Implements the FactoryBean<SimpleTrigger> interface.  The actual bean created here is 
+	 * one of type Trigger having name 'diskMgmtTrigger'
+	 * @return 
+	 */
 	@Bean
-	public JobDetailFactoryBean jobDetail() {
+	public SimpleTriggerFactoryBean diskMgmtTrigger_2(JobDetail job) {
+		SimpleTriggerFactoryBean trigger = new SimpleTriggerFactoryBean();
+		trigger.setJobDetail(job);
+
+		int frequencyInSec = 3;
+		Log.info("Configuring trigger to fire every {} seconds", frequencyInSec);
+
+		trigger.setRepeatInterval(frequencyInSec * 1000);
+		trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
+		trigger.setName("Disk Mgmt Trigger #2");
+		trigger.setDescription("Disk Mgmt #2");
+		return trigger;
+	}
+	
+
+	/**
+	 * Implements the FactoryBean<JobDetail> interface.  The actual bean created here is 
+	 * one of type JobDetail having name 'diskMgmtJobDetails'
+	 * @return 
+	 */
+	@Bean
+	public JobDetailFactoryBean diskMgmtJobDetails() {
 		JobDetailFactoryBean jobDetailFactory = new JobDetailFactoryBean();
 		jobDetailFactory.setJobClass(DiskMgmtJob.class);
 		jobDetailFactory.setName("Disk Mgmt_Job_Detail");

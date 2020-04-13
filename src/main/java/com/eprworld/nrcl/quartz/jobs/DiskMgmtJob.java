@@ -14,7 +14,7 @@ public class DiskMgmtJob extends QuartzJobBean {
 	@Override
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
 		try {
-			Log.info("Starting DiskMgmt Job");
+			Log.info("Starting DiskMgmt Job, trigger: {}", context.getTrigger().getDescription());
 			Thread.sleep(2000);
 			Log.info("Finished DiskMgmt Job");
 		} catch (InterruptedException e) {

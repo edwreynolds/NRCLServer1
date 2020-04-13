@@ -37,7 +37,7 @@ package com.eprworld.nrcl.util;
  */
 public class VersionInfo {
 	
-    public static final String appVersionNbr = "1.6.0";
+    public static final String appVersionNbr = "1.6.1";
     public static final String resourceVersionNbr = appVersionNbr.replaceAll("\\.", "_").replaceAll(" ", "-");
 	
     private VersionInfo() {}

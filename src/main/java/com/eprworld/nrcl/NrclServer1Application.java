@@ -2,6 +2,7 @@ package com.eprworld.nrcl;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,11 +59,11 @@ public class NrclServer1Application {
 		Log.info("NrclServer1Application start, version={}", VersionInfo.appVersionNbr);
 		System.out.println("NrclServer1Application startup, version="+VersionInfo.appVersionNbr);
 		
-//		String[] beanNames = applicationContext.getBeanDefinitionNames();
-//		Arrays.sort(beanNames);
-//		for (String beanName : beanNames) {
-//			Log.info("Bean Name: {}",beanName);
-//		}
+		String[] beanNames = applicationContext.getBeanDefinitionNames();
+		Arrays.sort(beanNames);
+		for (String beanName : beanNames) {
+			Log.info("Bean Name: {}",beanName);
+		}
 		
 		try {
 			// protoc --java_out="/home/developer/MyWorkspace/MyGitHubProjects/ClassifierProto/ClassifierServerApp/NRCLServer1/src/main/java" \
