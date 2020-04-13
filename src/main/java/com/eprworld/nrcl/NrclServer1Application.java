@@ -1,5 +1,8 @@
 package com.eprworld.nrcl;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -7,6 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import com.eprworld.nrcl.controller.HomeController;
+import com.eprworld.nrcl.protobuf.AddressBookProtos;
+import com.eprworld.nrcl.protobuf.AddressBookProtos.AddressBook;
+import com.eprworld.nrcl.protobuf.ListPeople;
 import com.eprworld.nrcl.util.VersionInfo;
 
 
@@ -58,6 +64,15 @@ public class NrclServer1Application {
 //		for (String beanName : beanNames) {
 //			Log.info("Bean Name: {}",beanName);
 //		}
+		
+		try {
+			AddressBook addressBook = AddressBook.parseFrom(new FileInputStream("addressbook.txt"));
+			ListPeople.Print(addressBook);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		
 		HomeController homeCtrl = (HomeController) applicationContext.getBean("homeController");
 		System.out.println("URL:  http://localhost:"+homeCtrl.getAppHttpServerPortNbr());

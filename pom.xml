@@ -51,6 +51,14 @@
 			</exclusions>
 		</dependency>
 		
+		<!-- Google's Protocol Buffers -->
+		<!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+		<dependency>
+		    <groupId>com.google.protobuf</groupId>
+		    <artifactId>protobuf-java</artifactId>
+		    <version>3.11.4</version>
+		</dependency>
+		
 		<!-- Need this to compile JSP -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
