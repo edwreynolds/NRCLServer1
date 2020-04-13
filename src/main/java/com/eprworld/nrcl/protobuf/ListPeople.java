@@ -4,13 +4,18 @@ import com.eprworld.nrcl.protobuf.AddressBookProto.AddressBook;
 import com.eprworld.nrcl.protobuf.AddressBookProto.Person;
 
 public class ListPeople {
+	// AddressBook is from Google's tutorial.
 	// Iterates though all people in the AddressBook and prints info about them.
 	public static void Print(AddressBook addressBook) {
 
 		for (Person person : addressBook.getPeopleList()) {
+			
+			byte rawPerson[] = person.toByteArray();
+			System.out.println("Person size in bytes: "+person.getSerializedSize());
+			
 			System.out.println("Person ID: " + person.getId());
 			System.out.println("  Name: " + person.getName());
-			// hasEmail does not exist because in .proto is not marked as 'Optional'
+			// hasEmail does not exist because in ProtoBuf V3 'Optional' is not supported
 //			if (person.hasEmail()) {
 //				System.out.println("  E-mail address: " + person.getEmail());
 //			}

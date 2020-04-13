@@ -38,9 +38,9 @@ import com.eprworld.nrcl.util.VersionInfo;
  * 	# Java / Spring Boot app that interfaces over a network to two different
  * components.  On one interface this app acts as a TCP server on the other interface
  * its a TCP client.
- * # Prototype a 
- * Quartz scheduler to manage disk space usage, periodically deleting files
- * Use Google Protocol Buffers in exchange of messages with a C++ app
+ * # Prototype:
+ * Use of Google Protocol Buffers to exchange messages with a C++ app
+ * Quartz scheduler to manage disk space usage, periodically deleting files.
  * 
  * 
  * @author developer
@@ -65,13 +65,12 @@ public class NrclServer1Application {
 //		}
 		
 		try {
-			// protoc --java_out=output addressbook.proto
-			// protoc --java_out="/home/developer/MyWorkspace/MyGitHubProjects/ClassifierProto/ClassifierServerApp/NRCLServer1/src/main/java" --proto_path="/home/developer/MyWorkspace/MyGitHubProjects/ClassifierProto/ClassifierServerApp/NRCLServer1/src/main/resources/proto_files" addressbook.proto
+			// protoc --java_out="/home/developer/MyWorkspace/MyGitHubProjects/ClassifierProto/ClassifierServerApp/NRCLServer1/src/main/java" \
+			// --proto_path="/home/developer/MyWorkspace/MyGitHubProjects/ClassifierProto/ClassifierServerApp/NRCLServer1/src/main/resources/proto_files" addressbook.proto
 			AddressBook addressBook = AddressBook.parseFrom(new FileInputStream("addressbook.txt"));
 			ListPeople.Print(addressBook);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.error("Unable to parse Address Book", e);
 		}
 
 		
