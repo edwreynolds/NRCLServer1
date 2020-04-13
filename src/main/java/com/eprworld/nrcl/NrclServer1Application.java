@@ -10,8 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import com.eprworld.nrcl.controller.HomeController;
-import com.eprworld.nrcl.protobuf.AddressBookProtos;
-import com.eprworld.nrcl.protobuf.AddressBookProtos.AddressBook;
+import com.eprworld.nrcl.protobuf.AddressBookProto.AddressBook;
 import com.eprworld.nrcl.protobuf.ListPeople;
 import com.eprworld.nrcl.util.VersionInfo;
 
@@ -66,6 +65,8 @@ public class NrclServer1Application {
 //		}
 		
 		try {
+			// protoc --java_out=output addressbook.proto
+			// protoc --java_out="/home/developer/MyWorkspace/MyGitHubProjects/ClassifierProto/ClassifierServerApp/NRCLServer1/src/main/java" --proto_path="/home/developer/MyWorkspace/MyGitHubProjects/ClassifierProto/ClassifierServerApp/NRCLServer1/src/main/resources/proto_files" addressbook.proto
 			AddressBook addressBook = AddressBook.parseFrom(new FileInputStream("addressbook.txt"));
 			ListPeople.Print(addressBook);
 		} catch (IOException e) {

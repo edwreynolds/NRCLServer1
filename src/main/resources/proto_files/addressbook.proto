@@ -14,8 +14,8 @@ import "google/protobuf/timestamp.proto";
 // [END declaration]
 
 // [START java_declaration]
-option java_package = "com.eprworld.nrcl";
-option java_outer_classname = "AddressBookProtos";
+option java_package = "com.eprworld.nrcl.protobuf";
+option java_outer_classname = "AddressBookProto";
 // [END java_declaration]
 
 // [START csharp_declaration]
@@ -48,4 +48,17 @@ message Person {
 message AddressBook {
   repeated Person people = 1;
 }
+
+// Reply to a request to update person.
+message UpdatePersonReply {
+  int32 replyStatusCode = 1;
+  string replyTxt = 2;
+}
+
 // [END messages]
+
+// The greeter service definition.
+service PersonService {
+  // Sends a greeting
+  rpc UpdatePerson (Person) returns (UpdatePersonReply) {};
+}

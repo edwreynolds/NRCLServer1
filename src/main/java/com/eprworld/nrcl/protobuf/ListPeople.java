@@ -1,7 +1,7 @@
 package com.eprworld.nrcl.protobuf;
 
-import com.eprworld.nrcl.protobuf.AddressBookProtos.AddressBook;
-import com.eprworld.nrcl.protobuf.AddressBookProtos.Person;
+import com.eprworld.nrcl.protobuf.AddressBookProto.AddressBook;
+import com.eprworld.nrcl.protobuf.AddressBookProto.Person;
 
 public class ListPeople {
 	// Iterates though all people in the AddressBook and prints info about them.
